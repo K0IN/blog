@@ -2,6 +2,9 @@
 import { VPBadge } from 'vitepress/theme'
 import { data as posts } from '../posts.data.ts'
 import { computed } from 'vue';
+import { useRoute } from 'vitepress';
+
+const route = useRoute();
 
 const props = defineProps<{
     tag: string;
@@ -10,7 +13,7 @@ const props = defineProps<{
 }>()
 
 const postWithSameTag = computed(() => {
-    return posts.filter(post => post.frontmatter.tags && post.frontmatter.tags.includes(props.tag));
+    return posts.filter(post => post.frontmatter.tags && post.frontmatter.tags.includes(props.tag) && post.url !== route.path);
 });
 
 </script>

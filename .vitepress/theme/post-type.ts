@@ -13,5 +13,4 @@ export interface Post {
     frontmatter: PostFrontmatter
     src: string | undefined
     html: string | undefined
-    //    excerpt: string | undefined
 }

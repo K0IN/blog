@@ -15,11 +15,9 @@ const { frontmatter }: { frontmatter: Ref<PostFrontmatter> } = useData() as unkn
 <template>
     <article :class="$style.article">
         <ArticleHeader :frontmatter="frontmatter" />
-
         <main :class="$style.content">
             <ContentWithScopedStyle />
         </main>
-
         <ArticleFooter :frontmatter="frontmatter" />
     </article>
 </template>

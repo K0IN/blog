@@ -1,12 +1,13 @@
 <script setup>
-import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
 import PostCard from '../Components/PostCard.vue'
 import { data as posts } from '../posts.data.ts'
 import { useData } from 'vitepress'
 import SocialMediaLinks from '../Components/SocialMediaLinks.vue'
 
-const { frontmatter, site } = useData()
-const githubUrl = site.value.themeConfig.socialLinks?.find(link => link.icon === 'github')?.link
+const { frontmatter } = useData()
+
+const allUniqueTags = new Set(posts.flatMap(p => p.frontmatter.tags || []));
+const topicCount = allUniqueTags.size;
 </script>
 
 <template>
@@ -23,8 +24,7 @@ const githubUrl = site.value.themeConfig.socialLinks?.find(link => link.icon ===
                         <span :class="$style['stat-label']">{{ posts.length === 1 ? 'Post' : 'Posts' }}</span>
                     </div>
                     <div :class="$style['stat-item']">
-                        <span :class="$style['stat-number']">{{[...new Set(posts.flatMap(p => p.frontmatter.tags ||
-                            []))].length}}</span>
+                        <span :class="$style['stat-number']">{{ topicCount }}</span>
                         <span :class="$style['stat-label']">Topics</span>
                     </div>
                 </div>

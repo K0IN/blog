@@ -11,10 +11,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-const tags = computed(() => {
-    return props.frontmatter.tags ?? [];
-});
+const tags = computed(() => props.frontmatter?.tags ?? []);
 </script>
 
 <template>
