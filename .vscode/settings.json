@@ -1,0 +1,15 @@
+{
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.git": true,
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    // https://vitepress.dev/guide/using-vue#vs-code-intellisense-support
+    "vue.server.includeLanguages": [
+        "vue",
+        "markdown"
+    ]
+}

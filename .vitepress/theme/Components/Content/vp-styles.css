@@ -1,0 +1,81 @@
+:root {
+    /* VitePress Component Variables */
+    --vp-c-divider: var(--border-muted);
+    --vp-c-text-1: var(--text);
+    --vp-c-text-2: var(--text-muted);
+    --vp-c-text-3: var(--text-muted);
+    --vp-c-bg: var(--bg);
+    --vp-c-bg-alt: var(--bg-light);
+    --vp-c-bg-elv: var(--bg-light);
+    --vp-c-brand: var(--primary);
+    --vp-c-brand-1: var(--primary);
+    --vp-c-brand-2: var(--primary);
+    --vp-c-brand-3: var(--primary);
+    --vp-c-brand-soft: var(--primary);
+    --vp-c-active: var(--primary);
+    --vp-c-active-hover: var(--primary-hover, var(--primary));
+
+    /* VitePress Code Block Variables */
+    --vp-code-block-bg: var(--bg);
+
+    --vp-code-line-height: 1.7;
+    --vp-code-line-warning-color: var(--vp-c-warning-soft);
+    --vp-code-font-size: 0.875em;
+    --vp-code-font-family: 'Fira Code', 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
+    --vp-code-color: var(--text);
+    --vp-code-bg: var(--bg-light);
+    --vp-code-block-divider-color: var(--border-muted);
+    --vp-code-lang-color: var(--text-muted);
+    --vp-code-line-highlight-color: var(--highlight);
+    --vp-code-line-number-color: var(--text-muted);
+    --vp-code-line-diff-add-color: rgba(16, 185, 129, 0.16);
+    --vp-code-line-diff-add-symbol-color: rgba(16, 185, 129, 0.8);
+    --vp-code-line-diff-remove-color: rgba(244, 63, 94, 0.16);
+    --vp-code-line-diff-remove-symbol-color: rgba(244, 63, 94, 0.8);
+    --vp-code-copy-code-border-color: var(--border-muted);
+    --vp-code-copy-code-bg: var(--bg-light);
+    --vp-code-copy-code-hover-border-color: var(--border);
+    --vp-code-copy-code-hover-bg: var(--bg);
+    --vp-code-copy-code-active-text: var(--text);
+}
+
+.vp-doc {
+    .dark .shiki span {
+        color: var(--shiki-dark, inherit);
+    }
+
+    html:not(.dark) .shiki span {
+        color: var(--shiki-light, inherit);
+    }
+
+    div[class*="language-"] {
+        position: relative;
+        margin: var(--blog-space-large) 0;
+        background-color: var(--vp-code-block-bg);
+        border-radius: var(--blog-radius-regular);
+        overflow-x: auto;
+        overflow-y: hidden;
+        border: 1px solid var(--vp-code-block-divider-color);
+        scrollbar-width: thin;
+        scrollbar-color: var(--vp-code-block-divider-color) transparent;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    >* {
+        color: var(--text-muted);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: var(--text);
+    }
+
+    strong {
+        color: var(--text);
+    }
+
+}

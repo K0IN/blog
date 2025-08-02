@@ -1,0 +1,107 @@
+:root {
+    /* Legacy custom properties */
+    --bg-dark: hsl(0 0% 0%);
+    --bg: hsl(0 0% 5%);
+    --bg-light: hsl(0 0% 10%);
+    --text: hsl(0 0% 95%);
+    --text-muted: hsl(0 0% 70%);
+    --border-color: hsl(0 0% 20%);
+    /* Primary color scheme */
+    --highlight: oklch(0.5 0.07 268);
+    --border: oklch(0.4 0.07 268);
+    --border-muted: oklch(0.3 0.07 268);
+    --primary: oklch(0.76 0.1 268);
+    --secondary: oklch(0.76 0.1 88);
+    --danger: oklch(0.7 0.07 30);
+    --warning: oklch(0.7 0.07 100);
+    --success: oklch(0.7 0.07 160);
+    --info: oklch(0.7 0.07 260);
+    /* oklch(0.7 0.07 200); */
+
+    /* Blog-specific custom properties */
+    --blog-max-width: 1200px;
+    --blog-content-max-width: 800px;
+    --blog-padding: 2rem 1rem;
+    --blog-padding-mobile: 1rem 0.5rem;
+
+    /* Spacing system */
+    --blog-space-small: 0.5rem;
+    --blog-space-regular: 1rem;
+    --blog-space-large: 2rem;
+
+    /* Typography scale */
+    --blog-font-size-xs: 0.75rem;
+    --blog-font-size-sm: 0.875rem;
+    --blog-font-size-base: 1rem;
+    --blog-font-size-lg: 1.1rem;
+    --blog-font-size-xl: 1.2rem;
+    --blog-font-size-2xl: 1.5rem;
+    --blog-font-size-3xl: 2rem;
+    --blog-font-size-4xl: 2.5rem;
+    --blog-font-size-5xl: 3rem;
+
+    /* Border radius system */
+    --blog-radius-small: 6px;
+    --blog-radius-regular: 12px;
+    --blog-radius-large: 24px;
+
+    /* Border width system */
+    --blog-border-thin: 1px;
+    --blog-border-medium: 2px;
+    --blog-border-thick: 4px;
+
+    /* Shadow system */
+    --blog-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --blog-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --blog-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --blog-shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.16);
+
+    /* Transition system */
+    --blog-transition-fast: 0.2s ease;
+    --blog-transition-normal: 0.3s ease;
+    --blog-transition-slow: 0.5s ease;
+
+    /* Layout spacing */
+    --blog-header-margin: 3rem;
+    --blog-section-margin: 2rem;
+    --blog-card-gap: 2rem;
+    --blog-grid-min-width: 350px;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-dark: hsl(0 0% 100%);
+        --bg: hsl(0 0% 95%);
+        --bg-light: hsl(0 0% 90%);
+        --text: hsl(0 0% 10%);
+        --text-muted: hsl(0 0% 30%);
+        --border-color: hsl(0 0% 80%);
+
+        /* Adjust shadows for light theme */
+        --blog-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --blog-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+        --blog-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+        --blog-shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.20);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    margin: 0;
+    padding: 0;
+
+    color: var(--text);
+    background-color: var(--bg-dark);
+
+    /* robot */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+    height: 100vh;
+}
