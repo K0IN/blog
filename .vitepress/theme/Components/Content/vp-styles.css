@@ -72,6 +72,9 @@
     h4,
     h5 {
         color: var(--text);
+        padding: 0px;
+        border: none;
+        margin-top: 0px;
     }
 
     strong {
