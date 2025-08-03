@@ -52,6 +52,9 @@ export function getTextSize(
     height: metrics.height,
   };
 }
+
+getTextSize("Hello", 16);
+// => { width: 42.12, height: 18.0 }
 ```
 
 I converted my font to otf, but any of OTF, TTF and WOFF should work too.

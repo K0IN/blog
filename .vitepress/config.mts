@@ -26,7 +26,11 @@ export default defineConfigWithTheme<{ socialLinks: { icon: IconDefinition, link
             ['link', { rel: 'preload', href: withBase('/assets/roboto.woff2', ctx.siteData.base), as: 'font', type: 'font/woff2', crossorigin: '' }]
         ]
     },
+    markdown: {
+        image: { lazyLoading: true },
+    },
     buildEnd: () => console.log('Build completed!'),
+
     // todo build llm.txt, blog.json, rss feed, etc.
     // https://github.com/okineadev/vitepress-plugin-llms
     // https://github.com/vuejs/vitepress/blob/main/docs/.vitepress/config.ts
