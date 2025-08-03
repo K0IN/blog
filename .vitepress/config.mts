@@ -14,7 +14,7 @@ export default defineConfigWithTheme<{ socialLinks: { icon: IconDefinition, link
         socialLinks: [
             { icon: faGithub, link: 'https://github.com/k0in', name: 'github/k0in' },
             { icon: faEnvelope, link: 'mailto:thisk0in@gmail.com', name: 'thisk0in@gmail.com' },
-            { icon: faDiscord, link: 'https://discord.com/users/.k0in', name: 'discord/K0IN' }
+            { icon: faDiscord, link: 'https://discord.com/users/191111299348955136', name: 'discord/K0IN' }
         ]
     },
     transformHead: (ctx: TransformContext) => {
