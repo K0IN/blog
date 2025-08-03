@@ -1,5 +1,5 @@
 ---
-title: Measuring SVG Text Width in Deno (No Canvas? No Problem!)
+title: Measuring SVG Text Width in Deno
 date: 2025-08-03
 description: A guide to getting the text width in SVG using Deno.
 layout: post
