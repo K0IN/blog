@@ -1,7 +1,7 @@
 ---
 title: C# Unexpected Unique in LINQ
 date: 2025-08-03
-description: A surprising behavior of the Except method in LINQ that treats sequences as sets.
+description: A surprising behavior of the `Except` method in LINQ that treats sequences as sets.
 layout: post
 tags:
   - C#
