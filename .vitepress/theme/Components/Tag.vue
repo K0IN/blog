@@ -2,10 +2,12 @@
 import { VPBadge } from 'vitepress/theme'
 import { data as posts } from '../posts.data.ts'
 import { computed } from 'vue';
-import { useRoute } from 'vitepress';
+import { useData, useRoute } from 'vitepress';
+import { withBase } from '../../build-context.ts';
 
 const route = useRoute();
 
+const base = useData().site.value.base;
 const props = defineProps<{
     tag: string;
     type?: 'tip' | 'info' | 'warning' | 'error';
@@ -13,7 +15,7 @@ const props = defineProps<{
 }>()
 
 const postWithSameTag = computed(() => {
-    return posts.filter(post => post.frontmatter.tags && post.frontmatter.tags.includes(props.tag) && post.url !== route.path);
+    return posts.filter(post => post.frontmatter.tags && post.frontmatter.tags.includes(props.tag) && withBase(post.url, base) !== route.path);
 });
 
 </script>
@@ -23,7 +25,7 @@ const postWithSameTag = computed(() => {
         <VPBadge :key="props.tag" :text="props.tag" type="tip" />
         <div :class="$style.hover" v-if="props.showRelatedPosts && postWithSameTag.length > 0">
             <span>Posts with this tag:</span>
-            <a v-for="post in postWithSameTag" :key="post.url" :href="post.url">
+            <a v-for="post in postWithSameTag" :key="post.url" :href="withBase(post.url, base)">
                 {{ post.frontmatter.title }}
             </a>
         </div>
@@ -38,6 +40,7 @@ const postWithSameTag = computed(() => {
     margin: 0;
     align-items: center;
     position: relative;
+    user-select: none;
 }
 
 .tagsContainer :deep(.VPBadge) {

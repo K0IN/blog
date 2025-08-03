@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { useRoute } from 'vitepress';
+import { useData, useRoute } from 'vitepress';
 import { computed } from 'vue';
 import { data as posts } from '../posts.data.ts';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { withBase } from '../../build-context.ts';
+
+const base = useData().site.value.base;
 
 const route = useRoute();
 
 function findCurrentIndex() {
     return posts.findIndex((p) => p.url === route.path);
 }
+
+
 
 // Navigation posts
 const nextPost = computed(() => posts[findCurrentIndex() - 1]);
@@ -20,14 +25,14 @@ const prevPost = computed(() => posts[findCurrentIndex() + 1]);
     <footer class="blog-footer">
         <!-- Next/Previous Post Navigation -->
         <div v-if="prevPost">
-            <a :href="prevPost.url" class="blog-nav-link">
+            <a :href="withBase(prevPost.url, base)" class="blog-nav-link">
                 <FontAwesomeIcon :icon="faArrowLeft" />
                 <span class="blog-nav-title">{{ prevPost.frontmatter.title }}</span>
             </a>
         </div>
 
         <div v-if="nextPost">
-            <a :href="nextPost.url" class="blog-nav-link">
+            <a :href="withBase(nextPost.url, base)" class="blog-nav-link">
                 <span class="blog-nav-title">{{ nextPost.frontmatter.title }}</span>
                 <FontAwesomeIcon :icon="faArrowRight" />
             </a>
@@ -37,7 +42,7 @@ const prevPost = computed(() => posts[findCurrentIndex() + 1]);
 
 <style scoped>
 .blog-footer {
-    width: var(--blog-content-max-width);
+    width: min(100%, var(--blog-content-max-width));
     margin: 0 auto;
     display: flex;
     flex-direction: row;
