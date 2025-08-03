@@ -38,7 +38,7 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
 
 <style module>
 .header {
-    width: var(--blog-content-max-width);
+    width: min(100%, var(--blog-content-max-width));
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -92,6 +92,7 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
     color: var(--text-muted);
     margin: 0;
     grid-row: 4;
+    width: 100%;
 }
 
 .tags {

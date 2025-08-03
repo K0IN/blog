@@ -42,7 +42,7 @@ const prevPost = computed(() => posts[findCurrentIndex() + 1]);
 
 <style scoped>
 .blog-footer {
-    width: var(--blog-content-max-width);
+    width: min(100%, var(--blog-content-max-width));
     margin: 0 auto;
     display: flex;
     flex-direction: row;
