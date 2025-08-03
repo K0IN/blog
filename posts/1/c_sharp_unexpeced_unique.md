@@ -23,7 +23,7 @@ foreach (var number in allExceptNumberTwo) {
 }
 ```
 
-If you guessed that the output would be `[1, 3, 4, 5]`, you are correct. But why is that?
+If you guessed that the output would be `[1, 2, 3, 5]`, you are correct. But why is that?
 
 ## The Explanation
 
