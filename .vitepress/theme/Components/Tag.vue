@@ -40,6 +40,7 @@ const postWithSameTag = computed(() => {
     margin: 0;
     align-items: center;
     position: relative;
+    user-select: none;
 }
 
 .tagsContainer :deep(.VPBadge) {
