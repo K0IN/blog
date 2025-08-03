@@ -1,13 +1,11 @@
 ---
 title: Measuring SVG Text Width in Deno (No Canvas? No Problem!)
 date: 2025-08-03
-author: K0IN
 description: A guide to getting the text width in SVG using Deno.
 layout: post
 tags:
   - Deno
   - SVG
-
 ---
 
 ## The challenge (no canvas in Deno) and why you'd care about SVG text measurement
@@ -33,7 +31,7 @@ Here's how I implemented it:
 ```ts
 import text2svg from "npm:text-to-svg";
 
-const textSvg = text2svg.loadSync("Roboto-VariableFont_wdth,wght.otf");
+const textSvg = text2svg.loadSync("Roboto.otf");
 
 export function getTextSize(
   text: string,
