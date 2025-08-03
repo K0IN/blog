@@ -1,9 +1,8 @@
 export interface PostFrontmatter {
     title: string
     date: string
-    author: string
     description: string
-    layout?: string
+    layout: 'post'
     tags?: string[],
     image?: string // "thumbnail" or "cover" image for the post
 }
