@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useRoute, withBase } from 'vitepress';
+import { useRoute } from 'vitepress';
 import { computed } from 'vue';
 import { data as posts } from '../posts.data.ts';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { withBase } from '../../config.mts';
 
 const route = useRoute();
 

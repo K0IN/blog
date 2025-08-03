@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { VPBadge } from 'vitepress/theme'
-import { withBase } from 'vitepress'
 import { data as posts } from '../posts.data.ts'
 import { computed } from 'vue';
 import { useRoute } from 'vitepress';
+import { withBase } from '../../config.mts';
 
 const route = useRoute();
 
