@@ -8,11 +8,13 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "docs:dev": "vitepress dev",
         "docs:build": "vitepress build",
+        "docs:build-deploy": "vitepress build --base /blog/",
         "docs:preview": "vitepress preview"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "sass-embedded": "^1.89.2",
         "vitepress": "^1.6.3"
     },
     "dependencies": {
@@ -23,6 +25,7 @@
         "@fortawesome/free-solid-svg-icons": "^7.0.0",
         "@fortawesome/vue-fontawesome": "^3.1.1",
         "@material-design-icons/font": "^0.14.15",
+        "proper-url-join": "^2.1.2",
         "timeago.js": "^4.0.2"
     }
 }

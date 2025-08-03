@@ -1,11 +1,10 @@
 <template>
-    <ClientOnly>
-        <span :title="formattedDate">{{ timeAgoText }}</span>
-    </ClientOnly>
+    <span :title="formattedDate">{{ timeAgoText }}</span>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { computed } from 'vue';
+import { format } from 'timeago.js';
 
 const props = defineProps({
     date: {
@@ -18,38 +17,20 @@ const props = defineProps({
     }
 });
 
-const timeAgoText = ref('');
-
-// Computed property for the formatted date tooltip
 const formattedDate = computed(() => {
     const date = typeof props.date === 'string' ? new Date(props.date) : props.date;
     return date.toLocaleDateString();
 });
 
-onMounted(async () => {
+const date = computed(() => {
+    return typeof props.date === 'string' ? new Date(props.date) : props.date;
+});
+const timeAgoText = computed(() => {
     try {
-        // Dynamic import for client-side only
-        const { format } = await import('timeago.js');
-
-        // Parse the date if it's a string
-        const date = typeof props.date === 'string' ? new Date(props.date) : props.date;
-
-        // Format the date as "time ago"
-        timeAgoText.value = format(date);
-
-        // Optional: Update the time every minute
-        const interval = setInterval(() => {
-            timeAgoText.value = format(date);
-        }, 60000); // Update every minute
-
-        // Cleanup interval on unmount
-        onUnmounted(() => {
-            clearInterval(interval);
-        });
-
+        return format(date.value);
     } catch (error) {
-        console.error('Failed to load timeago.js:', error);
-        timeAgoText.value = props.fallbackText;
+        console.error('Failed to format date:', error);
+        return props.fallbackText;
     }
 });
 </script>
