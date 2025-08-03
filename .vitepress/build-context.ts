@@ -1,3 +1,4 @@
+import urlJoin from 'proper-url-join';
 
 export function withBase(url: string, base: string): string {
 
@@ -10,5 +11,5 @@ export function withBase(url: string, base: string): string {
         return url
     }
 
-    return new URL(url, base).toString();
+    return urlJoin(base, url);
 }
