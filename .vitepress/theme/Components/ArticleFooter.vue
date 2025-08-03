@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import { data as posts } from '../posts.data.ts';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { withBase } from '../../config.mts';
+import { withBase } from '../../build-context.ts';
 
 const route = useRoute();
 

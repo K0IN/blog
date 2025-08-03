@@ -3,7 +3,7 @@ import { VPBadge } from 'vitepress/theme'
 import { data as posts } from '../posts.data.ts'
 import { computed } from 'vue';
 import { useRoute } from 'vitepress';
-import { withBase } from '../../config.mts';
+import { withBase } from '../../build-context.ts';
 
 const route = useRoute();
 

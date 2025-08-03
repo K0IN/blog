@@ -2,25 +2,15 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { defineConfigWithTheme } from 'vitepress'
+import { withBase } from './build-context';
 
-export function withBase(url: string): string {
-    // is a external url 
-    if (!url.startsWith('/')) {
-        return url
-    }
-    // is a relative url
-    if (url.startsWith('./') || url.startsWith('../')) {
-        return url
-    }
 
-    return `/blog${url}`
-}
 
 export default defineConfigWithTheme<{ socialLinks: { icon: IconDefinition, link: string, name: string }[] }>({
     lang: 'en-US',
     title: "K0IN-Blog",
     description: "A personal Blog",
-    base: '/blog/',
+    // base: '/blog/',
     cleanUrls: true,
     themeConfig: {
         socialLinks: [

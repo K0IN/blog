@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withBase } from '../../config.mts';
+import { withBase } from '../../build-context';
 import { Post } from '../post-type';
 import Tags from './Tags.vue';
 import TimeAgo from './TimeAgo.vue';
