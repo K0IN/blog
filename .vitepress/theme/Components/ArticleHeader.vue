@@ -15,39 +15,40 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
 </script>
 
 <template>
-    <header :class="$style.header">
-        <a href="/" :class="$style.backButton">
+    <header class="header">
+        <a href="/" class="back-button">
             <FontAwesomeIcon :icon="faArrowLeft" />
             Back to Overview
         </a>
-
-        <div :class="$style.meta">
+        <h1 class="title">{{ frontmatter.title }}</h1>
+        <div class="date">
             <TimeAgo :date="frontmatter.date" v-if="frontmatter.date" />
-            <span v-if="frontmatter.author" :class="$style.author">by {{ frontmatter.author }}</span>
         </div>
-
-        <h1 :class="$style.title">{{ frontmatter.title }}</h1>
-
-        <p v-if="frontmatter.description" :class="$style.description">
+        <p v-if="frontmatter.description" class="description">
             {{ frontmatter.description }}
         </p>
-
-        <Tags v-if="tags.length > 0" :tags="tags" :class="$style.tags" :showRelatedPosts="true" />
+        <Tags v-if="tags.length > 0" :tags="tags" class="tags" :showRelatedPosts="true" />
     </header>
 </template>
 
-<style module>
+<style scoped lang="scss">
 .header {
     width: min(100%, var(--blog-content-max-width));
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: "back-button back-button back-button"
+        "title title title"
+        "date . ."
+        "description description description"
+        "tags tags tags";
+
+    grid-template-columns: auto auto auto;
+    grid-template-rows: min-content min-content auto auto auto;
     gap: var(--blog-space-regular);
-    text-align: left;
 }
 
-.backButton {
+.back-button {
+    grid-area: back-button;
     display: inline-flex;
     align-items: center;
     gap: var(--blog-space-small);
@@ -56,50 +57,41 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
     font-size: var(--blog-font-size-sm);
     font-weight: 500;
     transition: color var(--blog-transition-fast);
-    grid-row: 1;
 }
 
-.backButton:hover {
-    color: var(--primary);
-}
-
-.meta {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: start;
-    align-items: center;
-    gap: var(--blog-space-regular);
-    font-size: var(--blog-font-size-sm);
-    color: var(--text-muted);
-    grid-row: 2;
-}
-
-.author {
-    font-style: italic;
+.back-button:hover {
+    color: var(--highlight);
 }
 
 .title {
+    grid-area: title;
     font-size: var(--blog-font-size-4xl);
     font-weight: 700;
     line-height: 1.2;
     color: var(--text);
-    grid-row: 3;
 }
 
 .description {
+    grid-area: description;
     font-size: var(--blog-font-size-lg);
     line-height: 1.6;
     color: var(--text-muted);
     margin: 0;
-    grid-row: 4;
-    width: 100%;
+}
+
+.date {
+    grid-area: date;
+    font-size: var(--blog-font-size-sm);
+    color: var(--text-muted);
 }
 
 .tags {
+    grid-area: tags;
     display: flex;
     justify-content: flex-start;
-    grid-row: 5;
 }
+
+/* Remove unused .meta class */
 
 /* Responsive design */
 @media (max-width: 768px) {
@@ -107,7 +99,7 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
         gap: var(--blog-space-regular);
     }
 
-    .backButton {
+    .back-button {
         font-size: var(--blog-font-size-xs);
     }
 
@@ -117,11 +109,6 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
 
     .description {
         font-size: var(--blog-font-size-base);
-    }
-
-    .meta {
-        grid-template-columns: 1fr;
-        gap: var(--blog-space-small);
     }
 }
 </style>
