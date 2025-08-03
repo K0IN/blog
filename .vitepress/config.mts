@@ -2,15 +2,11 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { defineConfigWithTheme } from 'vitepress'
-import { withBase } from './build-context';
-
-
 
 export default defineConfigWithTheme<{ socialLinks: { icon: IconDefinition, link: string, name: string }[] }>({
     lang: 'en-US',
     title: "K0IN-Blog",
     description: "A personal Blog",
-    // base: '/blog/',
     cleanUrls: true,
     themeConfig: {
         socialLinks: [
@@ -22,10 +18,10 @@ export default defineConfigWithTheme<{ socialLinks: { icon: IconDefinition, link
     transformHead: (ctx) => {
         return [
             ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-            ['link', { rel: 'icon', href: withBase('/favicon.ico') }],
+            ['link', { rel: 'icon', href: '/favicon.ico' }],
             ['meta', { name: 'theme-color', content: '#ffffff' }],
             ['meta', { name: 'description', content: ctx.pageData.description || ctx.siteData.description || '' }],
-            ['link', { rel: 'preload', href: withBase('/assets/roboto.woff2'), as: 'font', type: 'font/woff2', crossorigin: '' }]
+            ['link', { rel: 'preload', href: '/assets/roboto.woff2', as: 'font', type: 'font/woff2', crossorigin: '' }]
         ]
     },
     buildEnd: () => console.log('Build completed!'),
