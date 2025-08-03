@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VPBadge } from 'vitepress/theme'
+import { withBase } from 'vitepress'
 import { data as posts } from '../posts.data.ts'
 import { computed } from 'vue';
 import { useRoute } from 'vitepress';
@@ -23,7 +24,7 @@ const postWithSameTag = computed(() => {
         <VPBadge :key="props.tag" :text="props.tag" type="tip" />
         <div :class="$style.hover" v-if="props.showRelatedPosts && postWithSameTag.length > 0">
             <span>Posts with this tag:</span>
-            <a v-for="post in postWithSameTag" :key="post.url" :href="post.url">
+            <a v-for="post in postWithSameTag" :key="post.url" :href="withBase(post.url)">
                 {{ post.frontmatter.title }}
             </a>
         </div>

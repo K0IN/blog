@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 import { Post } from '../post-type';
 import Tags from './Tags.vue';
 import TimeAgo from './TimeAgo.vue';
@@ -9,7 +10,7 @@ const { post } = defineProps<{
 </script>
 
 <template>
-    <a :href="post.url" :class="$style.postCardLink">
+    <a :href="withBase(post.url)" :class="$style.postCardLink">
         <article :class="[$style.blogCard, { [$style.hasImage]: post.frontmatter.image }]">
             <div :class="$style.postImage" v-if="post.frontmatter.image">
                 <img :src="post.frontmatter.image" :alt="post.frontmatter.title" />
