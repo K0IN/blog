@@ -10,13 +10,13 @@ tags:
 
 ## The challenge (no canvas in Deno) and why you'd care about SVG text measurement
 
-While building a [serverless SVG badge generator in Deno](https://github.com/K0IN/can-i-use-embed), I ran into a fun challenge: how do you measure the width of text in an SVG... when Deno doesn’t support Canvas?
+While building a [serverless SVG badge generator in Deno](https://github.com/K0IN/can-i-use-embed), I ran into a fun challenge: how do you measure the width of text in an SVG, when Deno doesn’t support Canvas?
 
 The badges show browser compatibility info as inline SVG images. \
-To layout the badge properly, I needed to calculate how wide the label and value text would be—dynamically. \
+To layout the badge properly, I needed to calculate how wide the label would be. \
 Unfortunately, SVG doesn't have a layout engine, and Deno doesn't have a native [`CanvasRenderingContext2D`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) (see [issue](https://github.com/denoland/deno/issues/5701)).
 
-Since I was using a custom font, rough width estimates wouldn't cut it. I needed something precise.
+One thing that complicated this even more, was that i was using a custom font, so I needed to measure the text width with that specific font in mind. \
 
 ## Failed Starts & the Solution
 
