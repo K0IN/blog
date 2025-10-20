@@ -6,6 +6,7 @@ import type { PostFrontmatter } from '../post-type';
 import ArticleHeader from '../Components/ArticleHeader.vue';
 import ArticleFooter from '../Components/ArticleFooter.vue';
 import ContentWithScopedStyle from '../Components/Content/ContentWithScopedStyle.vue';
+import Comments from '../Components/Comments.vue';
 
 const { frontmatter }: { frontmatter: Ref<PostFrontmatter> } = useData() as unknown as {
     frontmatter: Ref<PostFrontmatter>;
@@ -19,6 +20,7 @@ const { frontmatter }: { frontmatter: Ref<PostFrontmatter> } = useData() as unkn
             <ContentWithScopedStyle />
         </main>
         <ArticleFooter :frontmatter="frontmatter" />
+        <Comments />
     </article>
 </template>
 
