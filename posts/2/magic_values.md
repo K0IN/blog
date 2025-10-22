@@ -9,9 +9,9 @@ tags:
   - Intuition
 ---
 
-## What are magic numbers or File signatures?
+## What are magic numbers?
 
-File signatures (also known as magic numbers) are specific sequences of bytes or numbers that are used to identify file formats, protocols, or data structures. They are commonly found at the start of content.
+Magic numbers are specific sequences of bytes or numbers that are used to identify file formats, protocols, or data structures. They are commonly found at the start of content.
 
 ## Why is it useful to know about some of them?
 
@@ -19,7 +19,7 @@ Sometimes you are presented with a string or a byte array and you have no idea w
 
 For example, maybe a web server returns a response with a content-type of `application/octet-stream` and you have no idea what it is. Or a file has no extension. You might also discover some interesting insights, like [.jar](https://en.wikipedia.org/wiki/JAR_(file_format)#Extraction) or [.apk](https://en.wikipedia.org/wiki/Apk_(file_format)#Package_contents) files are just zip files, and can be unpacked as such. Knowing some of the magic numbers can help you quickly identify what you are working with.
 
-## A list of Magic Numbers I found useful
+## A list of Values I find useful
 
 ### Identifying JSON (Base64 encoded)
 
