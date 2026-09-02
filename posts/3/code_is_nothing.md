@@ -9,6 +9,7 @@ tags:
     - Refactoring
     - Programming
     - Ai assisted writing
+aiAssisted: true
 ---
 
 # I Don’t Care About Your Legacy Reasons

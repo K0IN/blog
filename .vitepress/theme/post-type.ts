@@ -5,6 +5,7 @@ export interface PostFrontmatter {
     layout: 'post'
     tags?: string[],
     image?: string // "thumbnail" or "cover" image for the post
+    aiAssisted?: boolean
 }
 
 export interface Post {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, Ref } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import Tags from '../Components/Tags.vue';
 import TimeAgo from '../Components/TimeAgo.vue';
 import { PostFrontmatter } from '../post-type';
@@ -23,6 +23,14 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
         <h1 class="title">{{ frontmatter.title }}</h1>
         <div class="date">
             <TimeAgo :date="frontmatter.date" v-if="frontmatter.date" />
+            <span v-if="frontmatter.aiAssisted" class="authorship-note" tabindex="0"
+                aria-describedby="ai-assistance-tooltip">
+                <FontAwesomeIcon :icon="faCircleInfo" aria-hidden="true" />
+                AI was used in this post
+                <span id="ai-assistance-tooltip" class="authorship-tooltip" role="tooltip">
+                    Full disclosure: AI was used to format, write, and edit the content on this page.
+                </span>
+            </span>
         </div>
         <p v-if="frontmatter.description" class="description">
             {{ frontmatter.description }}
@@ -81,8 +89,64 @@ const tags = computed(() => props.frontmatter?.tags ?? []);
 
 .date {
     grid-area: date;
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.8rem;
+    gap: 0.5rem;
     font-size: var(--blog-font-size-sm);
     color: var(--text-muted);
+    line-height: 1;
+}
+
+.authorship-note {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.38rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--highlight) 55%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--highlight) 12%, transparent);
+    color: var(--highlight);
+    font-size: var(--blog-font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    cursor: help;
+    outline: none;
+    gap: 0.35rem;
+}
+
+.authorship-note:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+}
+
+.authorship-tooltip {
+    position: absolute;
+    z-index: 1;
+    bottom: calc(100% + 0.6rem);
+    left: 0;
+    width: max-content;
+    max-width: min(18rem, calc(100vw - 2rem));
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.35rem;
+    background: var(--text);
+    color: var(--bg-light);
+    font-size: var(--blog-font-size-xs);
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.4;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.25rem);
+    transition: opacity var(--blog-transition-fast), transform var(--blog-transition-fast);
+}
+
+.authorship-note:hover .authorship-tooltip,
+.authorship-note:focus .authorship-tooltip {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tags {

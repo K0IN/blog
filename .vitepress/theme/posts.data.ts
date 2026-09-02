@@ -37,7 +37,8 @@ export default createContentLoader('posts/**/*.md', {
                     description: page.frontmatter.description,
                     layout: page.frontmatter.layout,
                     tags: page.frontmatter.tags,
-                    image: resolvedImage
+                    image: resolvedImage,
+                    aiAssisted: page.frontmatter.aiAssisted
                 },
                 src: page.src,
                 html: page.html,

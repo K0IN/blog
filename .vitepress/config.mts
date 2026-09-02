@@ -18,13 +18,19 @@ export default defineConfigWithTheme<{ socialLinks: { icon: IconDefinition, link
         ]
     },
     transformHead: (ctx: TransformContext) => {
-        return [
+        const head = [
             ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
             ['link', { rel: 'icon', href: withBase('/favicon.ico', ctx.siteData.base) }],
             ['meta', { name: 'theme-color', content: '#ffffff' }],
             ['meta', { name: 'description', content: ctx.pageData.description || ctx.siteData.description || '' }],
             ['link', { rel: 'preload', href: withBase('/assets/roboto.woff2', ctx.siteData.base), as: 'font', type: 'font/woff2', crossorigin: '' }]
-        ]
+        ];
+
+        if (ctx.pageData.frontmatter.aiAssisted) {
+            head.push(['meta', { name: 'ai-assisted', content: 'true' }]);
+        }
+
+        return head;
     },
     markdown: {
         image: { lazyLoading: true },
